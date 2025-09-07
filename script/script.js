@@ -140,7 +140,7 @@ const loadByCatagory = (id) => {
         // console.log(.name)
         const allPlants = document.getElementById("all-plants");
 
-        console.log(plants);
+      
         allPlants.innerHTML +=
       `
         <div class="card bg-base-100 w-[310px] shadow-sm p-[10px] justify-between max-md:w-full">
@@ -180,18 +180,17 @@ const loadByCatagory = (id) => {
     });
 };
 
+
 // loadByCatagory();
+
+// add to cart section 
 
 document
   .getElementById("main-card-container")
   .addEventListener("click", (e) => {
     if (e.target.localName === "button") {
       const name = e.target.parentNode.parentNode.children[0].innerText;
-      const price =
-        e.target.parentNode.parentNode.children[2].children[1].children[0]
-          .children[0].innerText;
-
-      console.log(price);
+      const price = e.target.parentNode.parentNode.children[2].children[1].children[0].children[0].innerText;
 
       alert(`${name} has been added to the cart.`);
 
