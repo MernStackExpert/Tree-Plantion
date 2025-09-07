@@ -1,5 +1,17 @@
 
 
+const manageSpinner = (status) => {
+  if(status == true ){
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("all-categories").classList.add("hidden")
+
+  }else{
+    document.getElementById("all-categories").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden")
+
+  }
+}
+
 const allCategories = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((req) => req.json())
@@ -45,6 +57,8 @@ const displayModal = (plant) => {
 };
 
 const allPlants = () => {
+  manageSpinner(true)
+
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((req) => req.json())
     .then((data) => {
@@ -90,7 +104,10 @@ const allPlants = () => {
               </div>`;
         // console.log(plants)
       });
+      manageSpinner(false)
     });
+
+    
 };
 
 allPlants();
@@ -113,6 +130,7 @@ document.getElementById("all-categories").addEventListener("click", (e) => {
 });
 
 const loadByCatagory = (id) => {
+  manageSpinner(true)
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((req) => req.json())
     .then((data) => {
@@ -158,6 +176,7 @@ const loadByCatagory = (id) => {
                 </div>
               </div>`;
       });
+      manageSpinner(false)
     });
 };
 
@@ -214,3 +233,5 @@ document
       itemDiv.remove();
     }
   });
+
+
